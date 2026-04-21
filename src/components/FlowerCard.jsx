@@ -3,9 +3,13 @@ import rose from "../assets/red-rose.jpg";
 import tulip from "../assets/pink-tulip.jpg";
 import sunflower from "../assets/sunflower.jpg";
 import bouquet from "../assets/bouquet.jpg";
+import "./FlowerCard.css";
+import { useCart } from "../hooks/useCart";
+import { ShoppingBasket } from "lucide-react";
 
 const FlowerCard = ({ flower }) => {
   const navigate = useNavigate();
+  const { addToCart } = useCart();
 
   const images = {
     "red-rose.jpg": rose,
@@ -16,26 +20,39 @@ const FlowerCard = ({ flower }) => {
 
   return (
     <div
+      className="flower-card"
       onClick={() => navigate(`/product/${flower.id}`)}
-      style={{
-        cursor: "pointer",
-        border: "1px solid #ddd",
-        borderRadius: "8px",
-        padding: "12px",
-      }}
     >
-      <img
-        src={images[flower.imageUrl] || "🌸"}
-        alt={flower.name}
-        style={{
-          width: "100%",
-          height: "200px",
-          objectFit: "cover",
-          borderRadius: "6px",
-        }}
-      />
-      <h3>{flower.name}</h3>
-      <p>{flower.price} грн</p>
+      <div className="flower-card__image-wrap">
+        <img
+          src={images[flower.imageUrl] || "<Rose/>"}
+          alt={flower.name}
+          className="flower-card__image"
+        />
+        <button
+          className="flower-card__wishlist"
+          aria-label="Add to wishlist"
+          onClick={(e) => e.stopPropagation()}
+        >
+          ♡
+        </button>
+      </div>
+      <div className="flower-card__body">
+        <h3 className="flower-card__name">{flower.name}</h3>
+        <div className="flower-card__footer">
+          <span className="flower-card__price">{flower.price} UAH</span>
+          <button
+            className="flower-card__cart"
+            aria-label="Buy"
+            onClick={(e) => {
+              e.stopPropagation();
+              addToCart(flower);
+            }}
+          >
+            <ShoppingBasket />
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
