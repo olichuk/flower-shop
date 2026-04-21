@@ -29,13 +29,6 @@ const FlowerCard = ({ flower }) => {
           alt={flower.name}
           className="flower-card__image"
         />
-        <button
-          className="flower-card__wishlist"
-          aria-label="Add to wishlist"
-          onClick={(e) => e.stopPropagation()}
-        >
-          ♡
-        </button>
       </div>
       <div className="flower-card__body">
         <h3 className="flower-card__name">{flower.name}</h3>
