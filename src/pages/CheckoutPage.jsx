@@ -70,23 +70,7 @@ export default function CheckoutPage() {
   if (submitted) {
     return (
       <div className="page">
-        <nav className="navbar">
-          <a href="/" className="navbar__logo">
-            <span className="navbar__logo-icon">
-              <Rose />
-            </span>
-            F.LOVER
-          </a>
-          <div className="navbar__actions">
-            <button
-              className="navbar__btn navbar__cart-badge"
-              onClick={() => setIsCartOpen(true)}
-            >
-              <ShoppingBasket />
-              <span className="navbar__cart-count">{totalItems}</span>
-            </button>
-          </div>
-        </nav>
+       
         <div className="checkout-success">
           <div className="checkout-success__icon">
             <Rose />
@@ -117,6 +101,7 @@ export default function CheckoutPage() {
           </span>
           F.LOVER
         </a>
+      </nav>
         <div className="navbar__actions">
           <button
             className="navbar__btn navbar__cart-badge"
