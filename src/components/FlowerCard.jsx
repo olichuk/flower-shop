@@ -3,6 +3,7 @@ import rose from "../assets/red-rose.jpg";
 import tulip from "../assets/pink-tulip.jpg";
 import sunflower from "../assets/sunflower.jpg";
 import bouquet from "../assets/bouquet.jpg";
+import bouquet2 from "../assets/bouquet2.jpg";
 import "./FlowerCard.css";
 import { useCart } from "../hooks/useCart";
 import { ShoppingBasket } from "lucide-react";
@@ -16,6 +17,7 @@ const FlowerCard = ({ flower }) => {
     "pink-tulip.jpg": tulip,
     "bouquet.jpg": bouquet,
     "sunflower.jpg": sunflower,
+    "bouquet2.jpg": bouquet2,
   };
 
   return (
