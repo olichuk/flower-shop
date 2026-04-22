@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Banknote, CreditCard, Rose, ShoppingBasket } from "lucide-react";
+import { Banknote, CreditCard, Rose, Store } from "lucide-react";
 import { useCart } from "../hooks/useCart";
 import CartDrawer from "../components/CartDrawer";
 import "./CheckoutPage.css";
@@ -106,7 +106,7 @@ export default function CheckoutPage() {
             className="navbar__btn navbar__cart-badge"
             onClick={() => setIsCartOpen(true)}
           >
-            <ShoppingBasket />
+            <Store />
             <span className="navbar__cart-count">{totalItems}</span>
           </button>
         </div>
