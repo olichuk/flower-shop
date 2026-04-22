@@ -6,17 +6,17 @@ import { Rose, ShoppingBasket, Van, Leaf, Gift, Search } from "lucide-react";
 import { useCart } from "../hooks/useCart";
 import CartDrawer from "../components/CartDrawer";
 
-const TABS = [" Усі", "Букети", "Троянди", "Тюльпани", "Польові"];
+const TABS = ["Усі", "Букети", "Троянди", "Тюльпани", "Польові"];
 
 const HomePage = () => {
   const { flowers, loading, error } = useFlowers();
-  const [activeTab, setActiveTab] = useState("All");
+  const [activeTab, setActiveTab] = useState("Усі");
   const [search, setSearch] = useState("");
   const { totalItems, setIsCartOpen } = useCart();
 
   const filtered = flowers.filter((f) => {
     const matchesTab =
-      activeTab === "All" ||
+      activeTab === "Усі" ||
       f.category?.toLowerCase() === activeTab.toLowerCase();
     const matchesSearch =
       !search || f.name?.toLowerCase().includes(search.toLowerCase());
@@ -60,7 +60,7 @@ const HomePage = () => {
           <p className="hero__subtitle">
             Доставка в той самий день. Зібрані з любов'ю професійними ручками.
           </p>
-          <a href="/catalog" className="hero__cta">
+          <a href="#catalog" className="hero__cta">
             Buy now
           </a>
         </div>
@@ -108,7 +108,7 @@ const HomePage = () => {
       </section>
 
       {/* ── Catalog ── */}
-      <section className="catalog">
+      <section id="catalog" className="catalog">
         <div className="catalog__header">
           <h2 className="catalog__title">Наш каталог</h2>
           <p className="catalog__subtitle">Дослідіть наші сезонні добірки</p>
