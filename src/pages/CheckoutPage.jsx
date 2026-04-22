@@ -70,7 +70,6 @@ export default function CheckoutPage() {
   if (submitted) {
     return (
       <div className="page">
-       
         <div className="checkout-success">
           <div className="checkout-success__icon">
             <Rose />
@@ -101,7 +100,7 @@ export default function CheckoutPage() {
           </span>
           F.LOVER
         </a>
-      </nav>
+
         <div className="navbar__actions">
           <button
             className="navbar__btn navbar__cart-badge"
