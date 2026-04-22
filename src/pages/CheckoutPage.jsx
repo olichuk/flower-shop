@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Banknote, CreditCard, Rose, ShoppingBasket } from "lucide-react";
+import { Banknote, CreditCard, Rose } from "lucide-react";
 import { useCart } from "../hooks/useCart";
 import CartDrawer from "../components/CartDrawer";
 import "./CheckoutPage.css";
@@ -14,7 +14,7 @@ import bouquet2 from "../assets/bouquet2.jpg";
 
 export default function CheckoutPage() {
   const navigate = useNavigate();
-  const { cartItems, totalItems, totalPrice, setIsCartOpen } = useCart();
+  const { cartItems, totalPrice } = useCart();
   const [paymentMethod, setPaymentMethod] = useState("cash");
   const [submitted, setSubmitted] = useState(false);
   const images = {
@@ -100,16 +100,6 @@ export default function CheckoutPage() {
           </span>
           F.LOVER
         </a>
-
-        <div className="navbar__actions">
-          <button
-            className="navbar__btn navbar__cart-badge"
-            onClick={() => setIsCartOpen(true)}
-          >
-            <ShoppingBasket />
-            <span className="navbar__cart-count">{totalItems}</span>
-          </button>
-        </div>
       </nav>
 
       <div className="checkout-page">
