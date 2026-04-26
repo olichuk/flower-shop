@@ -10,11 +10,11 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 import "./AdminPage.css";
+import { Rose } from "lucide-react";
 
 const STATUS_LABELS = {
   new: "Нове",
   confirmed: "Підтверджено",
-  delivering: "Доставляється",
   done: "Виконано",
   cancelled: "Скасовано",
 };
@@ -22,7 +22,6 @@ const STATUS_LABELS = {
 const STATUS_COLORS = {
   new: "status--new",
   confirmed: "status--confirmed",
-  delivering: "status--delivering",
   done: "status--done",
   cancelled: "status--cancelled",
 };
@@ -54,6 +53,7 @@ export default function AdminPage() {
   return (
     <div className="admin-page">
       <div className="admin-header">
+        <Rose />
         <h1 className="admin-title">Замовлення</h1>
         <span className="admin-count">{orders.length} замовлень</span>
       </div>
