@@ -1,0 +1,266 @@
+.admin-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.admin-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.admin-count {
+  font-size: 13px;
+  color: #888;
+}
+
+.admin-empty {
+  text-align: center;
+  color: #aaa;
+  padding: 60px 0;
+  font-size: 15px;
+}
+
+/* ── Картка замовлення ── */
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.order-card {
+  border: 1px solid #e8e8e5;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.order-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.order-card__header:hover {
+  background: #f9f9f7;
+}
+
+.order-card__left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.order-card__id {
+  font-size: 11px;
+  font-weight: 600;
+  color: #aaa;
+  letter-spacing: 0.08em;
+  background: #f3f3f1;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.order-card__name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.order-card__phone {
+  font-size: 13px;
+  color: #888;
+  margin-top: 2px;
+}
+
+.order-card__right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.order-card__total {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.order-card__arrow {
+  font-size: 11px;
+  color: #aaa;
+}
+
+/* ── Статуси ── */
+.order-status {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.status--new {
+  background: #fef3c7;
+  color: #92400e;
+}
+.status--confirmed {
+  background: #dbeafe;
+  color: #1e40af;
+}
+.status--delivering {
+  background: #ede9fe;
+  color: #5b21b6;
+}
+.status--done {
+  background: #d1fae5;
+  color: #065f46;
+}
+.status--cancelled {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* ── Деталі ── */
+.order-card__details {
+  border-top: 1px solid #f0f0ee;
+  padding: 20px;
+  background: #fafaf9;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.order-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.order-detail-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+  color: #444;
+}
+
+.order-detail-label {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-bottom: 4px;
+}
+
+/* ── Товари ── */
+.order-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.order-item-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: #333;
+}
+
+.order-item-row__img {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #eee;
+  flex-shrink: 0;
+}
+
+.order-item-row__name {
+  flex: 1;
+}
+.order-item-row__qty {
+  color: #888;
+}
+.order-item-row__price {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ── Кнопки статусу ── */
+.order-status-change {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.status-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.status-btn {
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1.5px solid #ddd;
+  border-radius: 999px;
+  background: #fff;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.status-btn:hover {
+  border-color: #5a7a6a;
+  color: #5a7a6a;
+}
+
+.status-btn--active {
+  background: #5a7a6a;
+  border-color: #5a7a6a;
+  color: #fff;
+}
+
+/* ── Адаптив ── */
+@media (max-width: 600px) {
+  .order-details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .order-card__right {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+  }
+}
+.delete-btn {
+  align-self: flex-start;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1.5px solid #fca5a5;
+  border-radius: 999px;
+  background: #fff;
+  color: #ef4444;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.delete-btn:hover {
+  background: #fee2e2;
+  border-color: #ef4444;
+}

@@ -1,0 +1,116 @@
+.flower-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.flower-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+}
+
+.flower-card__image-wrap {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #f0efeb;
+}
+
+.flower-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.flower-card:hover .flower-card__image {
+  transform: scale(1.04);
+}
+
+.flower-card__wishlist {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #555;
+  backdrop-filter: blur(4px);
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+.flower-card__wishlist:hover {
+  background: #fff;
+  color: #c0392b;
+}
+
+.flower-card__body {
+  padding: 12px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.flower-card__meta {
+  font-size: 12px;
+  color: #999;
+  margin: 0;
+  font-family: inherit;
+}
+
+.flower-card__name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 8px;
+  font-family: inherit;
+}
+
+.flower-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flower-card__price {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: -0.3px;
+}
+
+.flower-card__cart {
+  background: #3a6b4a;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+  transition:
+    background 0.2s,
+    transform 0.15s;
+}
+
+.flower-card__cart:hover {
+  background: #2e5439;
+  transform: scale(1.08);
+}
