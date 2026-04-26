@@ -1,16 +1,67 @@
-# React + Vite
+# Flower Shop - E-commerce Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Опис проєкту
 
-Currently, two official plugins are available:
+Flower Shop "F.lover" — це повноцінна e-commerce платформа для продажу квітів та букетів.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Додаток включає:
 
-## React Compiler
+- каталог товарів з пошуком
+- кошик покупок
+- процес оформлення замовлення
+- адміністративну панель для управління замовленнями
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Стек технологій
 
-## Expanding the ESLint configuration
+### Frontend
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React 18 (Vite)
+- React Router
+- Context API
+
+### База даних
+
+- Firebase Firestore
+
+## Встановлення та запуск
+
+### 1. Клонування репозиторію
+
+\```bash
+git clone https://github.com/olichuk/flower-shop.git
+cd flower-shop
+\```
+
+### 2. Встановлення залежностей
+
+\```bash
+npm install
+\```
+
+### 3. Налаштування змінних середовища
+
+Створи файл `.env.` в корені проєкту:
+\```
+VITE_FIREBASE_API_KEY=your_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+VITE_FIREBASE_MEASUREMENT_ID=your_measurement_id
+\```
+
+### 4. Запуск проєкту
+
+\```bash
+npm run dev
+\```
+
+Додаток буде доступний за адресою: http://localhost:5173
+
+## Основні можливості
+
+- перегляд каталогу квітів
+- додавання товарів у кошик
+- оформлення замовлення
+- адміністративна панель
