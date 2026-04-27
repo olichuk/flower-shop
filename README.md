@@ -1,5 +1,6 @@
 [![CI/CD Pipeline](https://github.com/olichuk/flower-shop/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/olichuk/flower-shop/actions/workflows/ci-cd.yml)
 # Flower Shop "F.lover" - E-commerce Platform
+Посилання на сайт: https://flower-shop-f-lover.vercel.app/
 
 ## Опис проєкту
 
