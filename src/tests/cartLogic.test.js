@@ -72,7 +72,7 @@ describe('CartContext — totalItems та totalPrice', () => {
       { id: '1', price: 85, quantity: 2 },
       { id: '2', price: 55, quantity: 1 },
     ]
-    expect(calcTotalPrice(cart)).toBe(999)
+    expect(calcTotalPrice(cart)).toBe(225)
   })
 
   it('повертає 0 для порожнього кошика', () => {
