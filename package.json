@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "format": "prettier --write src/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -33,6 +34,7 @@
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.4.0",
     "jsdom": "^29.0.2",
+    "prettier": "^3.8.3",
     "vite": "^8.0.0",
     "vitest": "^4.1.5"
   }
