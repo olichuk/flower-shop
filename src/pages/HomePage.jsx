@@ -33,6 +33,7 @@ const HomePage = () => {
           </span>
           F.LOVER
         </a>
+        <span>{import.meta.env.VITE_APP_STATUS}</span>
         <div className="navbar__actions">
           <button
             className="navbar__btn navbar__cart-badge"

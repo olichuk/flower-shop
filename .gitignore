@@ -11,6 +11,10 @@ node_modules
 dist
 dist-ssr
 *.local
+coverage/
+playwright-report/
+test-results/
+.last-run.json
 
 # Editor directories and files
 .vscode/*
@@ -32,7 +36,6 @@ dist/
 # Environment variables
 .env
 .env.local
-.env.production
 
 # OS
 .DS_Store
