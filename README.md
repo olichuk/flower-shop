@@ -1,4 +1,5 @@
-# Flower Shop - E-commerce Platform
+[![CI/CD Pipeline](https://github.com/olichuk/flower-shop/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/olichuk/flower-shop/actions/workflows/ci-cd.yml)
+# Flower Shop "F.lover" - E-commerce Platform
 
 ## Опис проєкту
 
