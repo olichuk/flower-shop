@@ -1,51 +1,58 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Banknote, CreditCard, Rose } from "lucide-react";
-import { useCart } from "../hooks/useCart";
-import CartDrawer from "../components/CartDrawer";
-import "./CheckoutPage.css";
-import { db } from "../services/firebase";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import rose from "../assets/red-rose.jpg";
-import tulip from "../assets/pink-tulip.jpg";
-import sunflower from "../assets/sunflower.jpg";
-import bouquet from "../assets/bouquet.jpg";
-import bouquet2 from "../assets/bouquet2.jpg";
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { Banknote, CreditCard, Rose } from 'lucide-react'
+import { useCart } from '../hooks/useCart'
+import CartDrawer from '../components/CartDrawer'
+import './CheckoutPage.css'
+import { db } from '../services/firebase'
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
+import rose from '../assets/red-rose.jpg'
+import tulip from '../assets/pink-tulip.jpg'
+import sunflower from '../assets/sunflower.jpg'
+import bouquet from '../assets/bouquet.jpg'
+import bouquet2 from '../assets/bouquet2.jpg'
+import posthog from 'posthog-js'
 
 export default function CheckoutPage() {
-  const navigate = useNavigate();
-  const { cartItems, totalPrice } = useCart();
-  const [paymentMethod, setPaymentMethod] = useState("cash");
-  const [submitted, setSubmitted] = useState(false);
+  const navigate = useNavigate()
+  const { cartItems, totalPrice } = useCart()
+  const [paymentMethod, setPaymentMethod] = useState('cash')
+  const [submitted, setSubmitted] = useState(false)
   const images = {
-    "red-rose.jpg": rose,
-    "pink-tulip.jpg": tulip,
-    "bouquet.jpg": bouquet,
-    "sunflower.jpg": sunflower,
-    "bouquet2.jpg": bouquet2,
-  };
+    'red-rose.jpg': rose,
+    'pink-tulip.jpg': tulip,
+    'bouquet.jpg': bouquet,
+    'sunflower.jpg': sunflower,
+    'bouquet2.jpg': bouquet2,
+  }
 
   const [form, setForm] = useState({
-    firstName: "",
-    lastName: "",
-    phone: "",
-    recipientFirstName: "",
-    recipientLastName: "",
-    address: "",
-    comment: "",
-    cardNumber: "",
-    cardExpiry: "",
-    cardCvc: "",
-  });
+    firstName: '',
+    lastName: '',
+    phone: '',
+    recipientFirstName: '',
+    recipientLastName: '',
+    address: '',
+    comment: '',
+    cardNumber: '',
+    cardExpiry: '',
+    cardCvc: '',
+  })
+  useEffect(() => {
+    posthog.capture('checkout_started', {
+      items_count: cartItems.length,
+      total_price: totalPrice,
+    })
+  }, [])
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+    setForm({ ...form, [e.target.name]: e.target.value })
+  }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    await addDoc(collection(db, "orders"), {
+    await addDoc(collection(db, 'orders'), {
       customer: {
         firstName: form.firstName,
         lastName: form.lastName,
@@ -61,11 +68,15 @@ export default function CheckoutPage() {
       items: cartItems,
       totalPrice,
       createdAt: serverTimestamp(),
-      status: "new",
-    });
-
-    setSubmitted(true);
-  };
+      status: 'new',
+    })
+    posthog.capture('order_placed', {
+      items_count: cartItems.length,
+      total_price: totalPrice,
+      payment_method: paymentMethod,
+    })
+    setSubmitted(true)
+  }
 
   if (submitted) {
     return (
@@ -80,14 +91,14 @@ export default function CheckoutPage() {
           </p>
           <button
             className="checkout-success__btn"
-            onClick={() => navigate("/")}
+            onClick={() => navigate('/')}
           >
             Повернутись на головну
           </button>
         </div>
         <CartDrawer />
       </div>
-    );
+    )
   }
 
   return (
@@ -207,14 +218,14 @@ export default function CheckoutPage() {
               </h2>
               <div className="payment-options">
                 <label
-                  className={`payment-option ${paymentMethod === "cash" ? "active" : ""}`}
+                  className={`payment-option ${paymentMethod === 'cash' ? 'active' : ''}`}
                 >
                   <input
                     type="radio"
                     name="payment"
                     value="cash"
-                    checked={paymentMethod === "cash"}
-                    onChange={() => setPaymentMethod("cash")}
+                    checked={paymentMethod === 'cash'}
+                    onChange={() => setPaymentMethod('cash')}
                   />
                   <div className="payment-option__content">
                     <span className="payment-option__icon">
@@ -230,14 +241,14 @@ export default function CheckoutPage() {
                 </label>
 
                 <label
-                  className={`payment-option ${paymentMethod === "card" ? "active" : ""}`}
+                  className={`payment-option ${paymentMethod === 'card' ? 'active' : ''}`}
                 >
                   <input
                     type="radio"
                     name="payment"
                     value="card"
-                    checked={paymentMethod === "card"}
-                    onChange={() => setPaymentMethod("card")}
+                    checked={paymentMethod === 'card'}
+                    onChange={() => setPaymentMethod('card')}
                   />
                   <div className="payment-option__content">
                     <span className="payment-option__icon">
@@ -252,7 +263,7 @@ export default function CheckoutPage() {
               </div>
 
               {/* Поля карти */}
-              {paymentMethod === "card" && (
+              {paymentMethod === 'card' && (
                 <div className="card-fields">
                   <div className="form-group">
                     <label>Номер карти</label>
@@ -313,7 +324,7 @@ export default function CheckoutPage() {
               {cartItems.map((item) => (
                 <div key={item.id} className="order-item">
                   <img
-                    src={images[item.imageUrl] || "<Rose/>"}
+                    src={images[item.imageUrl] || '<Rose/>'}
                     alt={item.name}
                     className="order-item__img"
                   />
@@ -353,5 +364,5 @@ export default function CheckoutPage() {
 
       <CartDrawer />
     </div>
-  );
+  )
 }
