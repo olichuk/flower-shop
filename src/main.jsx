@@ -12,7 +12,7 @@ Sentry.init({
     Sentry.browserTracingIntegration(),
     Sentry.replayIntegration(),
   ],
-  replaysSessionSampleRate: 0.1, // ← додай це
+  replaysSessionSampleRate: 0.1,
   replaysOnErrorSampleRate: 1.0,
   tracesSampleRate: 1.0,
   environment: 'development',
