@@ -1,27 +1,34 @@
-import { useState } from "react";
-import { useFlowers } from "../hooks/useFlowers";
-import FlowerCard from "../components/FlowerCard";
-import "./HomePage.css";
-import { Rose, ShoppingBasket, Van, Leaf, Gift, Search } from "lucide-react";
-import { useCart } from "../hooks/useCart";
-import CartDrawer from "../components/CartDrawer";
+import { useState, useEffect } from 'react'
+import { useFlowers } from '../hooks/useFlowers'
+import FlowerCard from '../components/FlowerCard'
+import './HomePage.css'
+import { Rose, ShoppingBasket, Van, Leaf, Gift, Search } from 'lucide-react'
+import { useCart } from '../hooks/useCart'
+import CartDrawer from '../components/CartDrawer'
+import posthog from 'posthog-js'
 
-const TABS = ["Усі", "Букети", "Троянди", "Тюльпани", "Польові"];
+const TABS = ['Усі', 'Букети', 'Троянди', 'Тюльпани', 'Польові']
 
 const HomePage = () => {
-  const { flowers, loading, error } = useFlowers();
-  const [activeTab, setActiveTab] = useState("Усі");
-  const [search, setSearch] = useState("");
-  const { totalItems, setIsCartOpen } = useCart();
+  const { flowers, loading, error } = useFlowers()
+  const [activeTab, setActiveTab] = useState('Усі')
+  const [search, setSearch] = useState('')
+  const { totalItems, setIsCartOpen } = useCart()
+  const [showDiscountBanner, setShowDiscountBanner] = useState(false)
 
   const filtered = flowers.filter((f) => {
     const matchesTab =
-      activeTab === "Усі" ||
-      f.category?.toLowerCase() === activeTab.toLowerCase();
+      activeTab === 'Усі' ||
+      f.category?.toLowerCase() === activeTab.toLowerCase()
     const matchesSearch =
-      !search || f.name?.toLowerCase().includes(search.toLowerCase());
-    return matchesTab && matchesSearch;
-  });
+      !search || f.name?.toLowerCase().includes(search.toLowerCase())
+    return matchesTab && matchesSearch
+  })
+  useEffect(() => {
+    posthog.onFeatureFlags(() => {
+      setShowDiscountBanner(posthog.isFeatureEnabled('show-discount-banner'))
+    })
+  }, [])
 
   return (
     <div className="page">
@@ -110,6 +117,12 @@ const HomePage = () => {
 
       {/* ── Catalog ── */}
       <section id="catalog" className="catalog">
+        {showDiscountBanner && (
+          <div className="discount-banner">
+            Спеціальна пропозиція — знижка 10% на перше замовлення! Використай
+            промокод: <strong>FLOWER10</strong>
+          </div>
+        )}
         <div className="catalog__header">
           <h2 className="catalog__title">Наш каталог</h2>
           <p className="catalog__subtitle">Дослідіть наші сезонні добірки</p>
@@ -131,7 +144,7 @@ const HomePage = () => {
             {TABS.map((tab) => (
               <button
                 key={tab}
-                className={`filter-tab${activeTab === tab ? " filter-tab--active" : ""}`}
+                className={`filter-tab${activeTab === tab ? ' filter-tab--active' : ''}`}
                 onClick={() => setActiveTab(tab)}
               >
                 {tab}
@@ -154,7 +167,7 @@ const HomePage = () => {
 
       <CartDrawer />
     </div>
-  );
-};
+  )
+}
 
-export default HomePage;
+export default HomePage
