@@ -117,12 +117,20 @@ const HomePage = () => {
 
       {/* ── Catalog ── */}
       <section id="catalog" className="catalog">
+        <button
+          onClick={() => {
+            throw new Error('Sentry Test: квітка не знайдена!')
+          }}
+        >
+          Зламати
+        </button>
         {showDiscountBanner && (
           <div className="discount-banner">
             Спеціальна пропозиція — знижка 10% на перше замовлення! Використай
             промокод: <strong>FLOWER10</strong>
           </div>
         )}
+
         <div className="catalog__header">
           <h2 className="catalog__title">Наш каталог</h2>
           <p className="catalog__subtitle">Дослідіть наші сезонні добірки</p>

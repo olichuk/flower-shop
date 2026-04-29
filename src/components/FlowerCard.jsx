@@ -22,7 +22,6 @@ const FlowerCard = ({ flower }) => {
   }
   const handleCardClick = () => {
     posthog.capture('product_viewed', {
-      // 👈 подія перегляду
       product_id: flower.id,
       product_name: flower.name,
       price: flower.price,
@@ -32,7 +31,6 @@ const FlowerCard = ({ flower }) => {
   const handleAddToCart = (e) => {
     e.stopPropagation()
     posthog.capture('add_to_cart', {
-      // 👈 подія кошику
       product_id: flower.id,
       product_name: flower.name,
       price: flower.price,

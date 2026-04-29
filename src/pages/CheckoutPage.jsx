@@ -12,6 +12,7 @@ import sunflower from '../assets/sunflower.jpg'
 import bouquet from '../assets/bouquet.jpg'
 import bouquet2 from '../assets/bouquet2.jpg'
 import posthog from 'posthog-js'
+import * as Sentry from '@sentry/react'
 
 export default function CheckoutPage() {
   const navigate = useNavigate()
@@ -51,6 +52,11 @@ export default function CheckoutPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    Sentry.setUser({
+      id: form.phone,
+      address: form.address,
+      firstName: form.firstName,
+    })
 
     await addDoc(collection(db, 'orders'), {
       customer: {
@@ -308,7 +314,13 @@ export default function CheckoutPage() {
               Ми передзвонимо вам для підтвердження та узгодження деталей
               доставки
             </div>
-
+            <button
+              onClick={() => {
+                throw new Error('Sentry Test: квітка не знайдена!')
+              }}
+            >
+              Зламати
+            </button>
             <button type="submit" className="checkout-submit">
               Підтвердити замовлення
             </button>
