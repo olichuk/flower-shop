@@ -19,7 +19,8 @@ Sentry.init({
 })
 
 posthog.init(import.meta.env.VITE_POSTHOG_KEY, {
-  api_host: import.meta.env.VITE_POSTHOG_HOST,
+  api_host: window.location.origin + '/ingest',
+  ui_host: import.meta.env.VITE_POSTHOG_HOST,
   person_profiles: 'always',
   capture_pageview: true,
   session_recording: {
